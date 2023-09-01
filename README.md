@@ -1,0 +1,1 @@
+# wg-calendar-generator
