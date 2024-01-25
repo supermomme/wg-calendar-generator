@@ -18,6 +18,7 @@
             version = "1.0.0";
             makeCacheWritable = true;
             buildInputs = [
+              pkgs.chromium
               pkgs.nodejs-18_x
             ];
 
