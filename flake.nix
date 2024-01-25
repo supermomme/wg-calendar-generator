@@ -16,7 +16,7 @@
           packages.default = pkgs.buildNpmPackage rec {
             pname = "wg-calendar-generator";
             version = "1.0.0";
-
+            makeCacheWritable = true;
             buildInputs = [
               pkgs.nodejs-18_x
             ];
@@ -27,15 +27,14 @@
             installPhase = ''
               mkdir $out
               npm run build
-              cp -r .output/server $out
-              cp -r .output/public $out
+              cp -r .output $out
 
               mkdir $out/bin
               touch $out/bin/wg-calendar-generator
               chmod +x $out/bin/wg-calendar-generator
               cat > $out/bin/wg-calendar-generator <<EOL
               #!${pkgs.stdenv.shell}
-              ${pkgs.nodejs-18_x}/bin/node $out/server/index.mjs
+              ${pkgs.nodejs-18_x}/bin/node $out/.output/server/index.mjs
               EOL
 
               echo "#!${pkgs.stdenv.shell}" >> $out/wg-calendar-generator
