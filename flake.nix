@@ -21,25 +21,7 @@
               pkgs.nodejs-18_x
             ];
 
-            # deps = [
-            #   pkgs.chromium
-            #   pkgs.chromedriver
-            #   pkgs.glib
-            #   pkgs.nss
-            #   pkgs.fozntconfig
-            # ];
-
             src = ./.;
-
-            shellHook = ''
-              echo "Hello shell"
-              export NITRO_PORT="4000"
-              export PUPPETEER_EXECUTABLE_PATH="$out/bin/chromium-browser";
-            '';
-
-            # NITRO_PORT="4000";
-            # PUPPETEER_EXECUTABLE_PATH="$out/bin/chromium-browser";
-
 
             # How the output of the build phase
             installPhase = ''

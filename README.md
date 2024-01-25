@@ -36,3 +36,5 @@ By default, `npm run build` will generate a Node app that you can run with `npm 
 `nix develop --command wg-calendar-generator`
 
 `nix build && ./result/bin/wg-calendar-generator`
+
+`PUPPETEER_EXECUTABLE_PATH=${which chromium-browser}`
