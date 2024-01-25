@@ -46,6 +46,8 @@
               EOL
 
               echo "#!${pkgs.stdenv.shell}" >> $out/wg-calendar-generator
+
+              ln -s ${pkgs.pkgs.chromium}/bin/chromium-browser $out/bin/chromium-browser
             '';
 
             npmDepsHash = "sha256-DVXV94oiNra9qHp2v3UPHH6QQ4+l/QuS0nb4d+YdCk4=";
