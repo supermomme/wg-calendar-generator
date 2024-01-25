@@ -68,11 +68,9 @@ export default function Home() {
 
   return (
     <main>
-      <Title>Hello World</Title>
-      {/* <h1>Hello world!</h1>
-      <button onClick={downloadPDF}>Download PDF</button> */}
+      <Title>WG-Kalender</Title>
       <div class="flex justify-center w-full h-full items-center">
-        <div class="bg-violet-100 bg w-[40rem] mt-32 px-8 py-8 rounded space-y-4">
+        <div class="bg-violet-100 bg w-[40rem] sm:mt-32 mt-0 px-8 py-8 rounded space-y-4">
           <h1 class="text-4xl font-bold text-gray-800 mb-3">WG-Kalender</h1>
 
           <div>
