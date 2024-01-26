@@ -22,7 +22,6 @@
 
             src = ./.;
 
-            # # How the output of the build phase
             installPhase = ''
               mkdir $out
               npm run build
