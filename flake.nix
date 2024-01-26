@@ -16,34 +16,20 @@
           packages.default = pkgs.buildNpmPackage rec {
             pname = "wg-calendar-generator";
             version = "1.0.0";
-            makeCacheWritable = true;
             buildInputs = [
               pkgs.nodejs-18_x
             ];
 
             src = ./.;
 
-            # How the output of the build phase
+            # # How the output of the build phase
             installPhase = ''
               mkdir $out
               npm run build
-              cp -r .output $out
-
-              mkdir $out/bin
-              touch $out/bin/wg-calendar-generator
-              chmod +x $out/bin/wg-calendar-generator
-              cat > $out/bin/wg-calendar-generator <<EOL
-              #!${pkgs.stdenv.shell}
-              ${pkgs.nodejs-18_x}/bin/node $out/.output/server/index.mjs
-              EOL
-
-              ln -s ${pkgs.chromium}/bin/* $out/bin/
-              ln -s ${pkgs.glib}/bin/* $out/bin/
-              ln -s ${pkgs.nss}/bin/* $out/bin/
-              ln -s ${pkgs.fontconfig}/bin/* $out/bin/
+              cp -r dist/* $out
             '';
 
-            npmDepsHash = "sha256-DVXV94oiNra9qHp2v3UPHH6QQ4+l/QuS0nb4d+YdCk4=";
+            npmDepsHash = "sha256-WNWZis24P78M5F3QikgVKW84UQ7QOq2j7eU9S1b93g0=";
 
             meta = {
               description = "A printable calendar generator for the Flatshares";
