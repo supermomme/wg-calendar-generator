@@ -105,7 +105,7 @@ window.onload = () => {
             <tr class="border-b border-gray-100 ${day.friday ? 'border-b-0' : ''} ${day.saturday ? 'bg-fuchsia-200 border-b-0' : ''} ${day.sunday ? 'bg-fuchsia-300 border-b-0' : ''}">
               <td class="border-r-2 border-fuchsia-800"><span class="font-semibold mr-2 ml-1">${day.DD}</span><span class="text-xs">${day.ddd}</span></td>
               ${people.map(() => '<td class="border-r border-fuchsia-800"></td>').join('\n')}
-              ${people.map((_, i) => `<td class="border-l border-fuchsia-800 ${i === 0 ? 'border-l-2' : ''}"></td>`).join('\n')}
+              ${extraCols.map((_, i) => `<td class="border-l border-fuchsia-800 ${i === 0 ? 'border-l-2' : ''}"></td>`).join('\n')}
             </tr>
           `).join('\n')}
         </tbody>
