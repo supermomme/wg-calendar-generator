@@ -3,7 +3,13 @@ import dayjs from 'dayjs'
 
 function getArrayOfDays(month: number, year: number) {
   const daysInMonth = dayjs(`${year}-${month}`).daysInMonth()
-  const days = []
+  const days: {
+    DD: string,
+    ddd: string,
+    friday: boolean,
+    saturday: boolean,
+    sunday: boolean
+  }[] = []
   for (let i = 1; i <= daysInMonth; i++) {
     const day = dayjs(`${year}-${month}-${i}`)
     days.push({
@@ -18,7 +24,7 @@ function getArrayOfDays(month: number, year: number) {
 }
 
 function addPerson(value = '') {
-  var div = document.createElement('div');
+  const div = document.createElement('div')
   div.innerHTML = `
   <div class="flex items-center gap-1 mt-2">
     <input class="people-input block w-full px-2.5 py-1.5 rounded" placeholder="Max" value="${value}" />
@@ -26,15 +32,15 @@ function addPerson(value = '') {
       <svg class="w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
     </button>
   </div>
-  `.trim();
+  `.trim()
 
-  const peopleWrapper = document.getElementById('peopleWrapper');
-  if (!peopleWrapper) throw new Error('People-Wrapper not found');
-  peopleWrapper.appendChild(div.firstChild!);
+  const peopleWrapper = document.getElementById('peopleWrapper')
+  if (!peopleWrapper) throw new Error('People-Wrapper not found')
+  peopleWrapper.appendChild(div.firstChild!)
 }
 
 function addExtraCol(value = '') {
-  var div = document.createElement('div');
+  const div = document.createElement('div')
   div.innerHTML = `
   <div class="flex items-center gap-1 mt-2">
     <input class="extraCol-input block w-full px-2.5 py-1.5 rounded" placeholder="Geburtstag" value="${value}" />
@@ -42,11 +48,11 @@ function addExtraCol(value = '') {
       <svg class="w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
     </button>
   </div>
-  `.trim();
+  `.trim()
 
-  const extraColsWrapper = document.getElementById('extraColsWrapper');
-  if (!extraColsWrapper) throw new Error('ExtraCols-Wrapper not found');
-  extraColsWrapper.appendChild(div.firstChild!);
+  const extraColsWrapper = document.getElementById('extraColsWrapper')
+  if (!extraColsWrapper) throw new Error('ExtraCols-Wrapper not found')
+  extraColsWrapper.appendChild(div.firstChild!)
 }
 
 window.onload = () => {
@@ -59,20 +65,20 @@ window.onload = () => {
   addExtraCol('Abwasch')
   addExtraCol('Bad')
 
-  const addPeopleButtonElement = document.getElementById('addPeopleButton');
-  if (!addPeopleButtonElement) throw new Error('Button not found');
+  const addPeopleButtonElement = document.getElementById('addPeopleButton')
+  if (!addPeopleButtonElement) throw new Error('Button not found')
   addPeopleButtonElement.addEventListener('click', () => addPerson())
 
-  const addExtraColsButtonElement = document.getElementById('addExtraColsButton');
-  if (!addExtraColsButtonElement) throw new Error('Button not found');
+  const addExtraColsButtonElement = document.getElementById('addExtraColsButton')
+  if (!addExtraColsButtonElement) throw new Error('Button not found')
   addExtraColsButtonElement.addEventListener('click', () => {
 
   })
 
-  const downloadButtonElement = document.getElementById('downloadButton');
-  if (!downloadButtonElement) throw new Error('Button not found');
+  const downloadButtonElement = document.getElementById('downloadButton')
+  if (!downloadButtonElement) throw new Error('Button not found')
   downloadButtonElement.addEventListener('click', () => {
-    console.log('clicked');
+    console.log('clicked')
 
     const year = parseInt((document.getElementById('year') as HTMLInputElement).value)
     const month = parseInt((document.getElementById('month') as HTMLInputElement).value)
@@ -98,7 +104,7 @@ window.onload = () => {
           ${getArrayOfDays(month, year).map(day => `
             <tr class="border-b border-gray-100 ${day.friday ? 'border-b-0' : ''} ${day.saturday ? 'bg-fuchsia-200 border-b-0' : ''} ${day.sunday ? 'bg-fuchsia-300 border-b-0' : ''}">
               <td class="border-r-2 border-fuchsia-800"><span class="font-semibold mr-2 ml-1">${day.DD}</span><span class="text-xs">${day.ddd}</span></td>
-              ${people.map(() => `<td class="border-r border-fuchsia-800"></td>`).join('\n')}
+              ${people.map(() => '<td class="border-r border-fuchsia-800"></td>').join('\n')}
               ${people.map((_, i) => `<td class="border-l border-fuchsia-800 ${i === 0 ? 'border-l-2' : ''}"></td>`).join('\n')}
             </tr>
           `).join('\n')}
