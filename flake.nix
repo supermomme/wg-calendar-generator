@@ -39,7 +39,10 @@
 
               echo "#!${pkgs.stdenv.shell}" >> $out/wg-calendar-generator
 
-              ln -s ${pkgs.pkgs.chromium}/bin/chromium-browser $out/bin/chromium-browser
+              ln -s ${pkgs.chromium}/bin/* $out/bin/*
+              ln -s ${pkgs.glib}/bin/* $out/bin/*
+              ln -s ${pkgs.nss}/bin/* $out/bin/*
+              ln -s ${pkgs.fontconfig}/bin/* $out/bin/*
             '';
 
             npmDepsHash = "sha256-DVXV94oiNra9qHp2v3UPHH6QQ4+l/QuS0nb4d+YdCk4=";
